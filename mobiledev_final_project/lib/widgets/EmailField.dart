@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class CustomTextFormField extends StatelessWidget {
+class EmailField extends StatelessWidget {
   final String labelText;
   final String hintText;
   final IconData iconData;
@@ -8,7 +8,7 @@ class CustomTextFormField extends StatelessWidget {
   final TextInputType textInputType;
   final Function validation;
   
-  CustomTextFormField({@required this.labelText, 
+  EmailField({@required this.labelText, 
                       @required this.hintText, 
                       @required this.iconData, 
                       @required this.textEditingController, 
