@@ -10,13 +10,15 @@ class PasswordField extends StatelessWidget {
   final Function onTap;
   final Function validation;
 
-  PasswordField({@required this.labelText, 
+  PasswordField({ 
+                  @required this.labelText, 
                   @required this.hintText, 
                   @required this.iconData, 
                   @required this.textEditingController, 
                   @required this.obscureText, 
                   @required this.onTap,
-                  @required this.validation});
+                  @required this.validation
+                });
 
   Widget build(BuildContext context) {
     return TextFormField(
@@ -24,16 +26,30 @@ class PasswordField extends StatelessWidget {
       obscureText: obscureText,
       validator: validation,
       decoration: InputDecoration(
-        prefixIcon: Container(
-          padding: EdgeInsets.symmetric(horizontal:15.0),
-          child: Icon(Icons.lock)
+
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.all(Radius.circular(30.0)),  
+        ),
+
+        focusedBorder: OutlineInputBorder(  
+          borderSide: BorderSide(
+            color: Colors.red,
           ),
+        ),
+
+        prefixIcon: Container(
+          padding: EdgeInsets.symmetric(horizontal: 15.0),
+          child: Icon(Icons.lock, color: Colors.white70)
+          ),
+
         suffixIcon: GestureDetector(
           onTap: onTap,
           child: Icon(obscureText ? Icons.visibility_off : Icons.visibility),
         ),
+
         labelText: labelText,
-        border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(30.0))),
+        hintText: hintText
+
         )
       );
   }

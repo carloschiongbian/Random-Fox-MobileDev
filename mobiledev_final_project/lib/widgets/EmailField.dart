@@ -8,12 +8,14 @@ class EmailField extends StatelessWidget {
   final TextInputType textInputType;
   final Function validation;
   
-  EmailField({@required this.labelText, 
-                      @required this.hintText, 
-                      @required this.iconData, 
-                      @required this.textEditingController, 
-                      @required this.textInputType, 
-                      @required this.validation});
+  EmailField({
+                @required this.labelText, 
+                @required this.hintText, 
+                @required this.iconData, 
+                @required this.textEditingController, 
+                @required this.textInputType, 
+                @required this.validation, 
+              });
 
   @override
   Widget build(BuildContext context) {
@@ -22,15 +24,24 @@ class EmailField extends StatelessWidget {
       keyboardType: textInputType,
       validator: validation,
       decoration: InputDecoration(
+
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.all(Radius.circular(30.0)),  
+        ),
+
+        focusedBorder: OutlineInputBorder(  
+          borderSide: BorderSide(
+            color: Colors.red,
+          ),
+        ),
+
         prefixIcon: Container(
           padding: EdgeInsets.symmetric(horizontal: 15.0),
-          child: Icon(Icons.mail_outline_rounded),
+          child: Icon(Icons.mail_outline_rounded, color: Colors.white70),
         ),
+        
         labelText: labelText,
         hintText: hintText,
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.all(Radius.circular(30.0)),
-        ),
       ),
     );
   }

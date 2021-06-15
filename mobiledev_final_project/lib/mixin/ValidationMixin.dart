@@ -1,5 +1,3 @@
-import 'package:flutter/cupertino.dart';
-
 class ValidationMixin {
 
   String password;
