@@ -1,4 +1,10 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:mobiledev_final_project/models/ImageModel.dart';
+import 'package:mobiledev_final_project/widgets/ImageList.dart';
+
+import 'package:http/http.dart' show get;
 
 class HomePage extends StatefulWidget {
   
@@ -8,13 +14,31 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-
-  GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  int count = 0;
+  List<ImageModel> images = [];
+  static const String url = "randomfox.ca";
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: Text("i am fox"),
-    ));
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Let's See Some Foxes!"),
+      ),
+      body: ImageList(images),
+      floatingActionButton: FloatingActionButton(
+        onPressed: fetchImage,
+        child: Icon(Icons.add),
+      ),
+    );
+  }
+
+
+  void fetchImage() async {
+
+    try {
+      var response = await get(Uri.https(url,"/floof/"));
+      dynamic parsedJSON = json.decode(response.body);
+      ImageModel imageModel = ImageModel.fromJSON(parsedJSON);
+      images.add(imageModel);
+    } catch (e) {}
   }
 }
