@@ -7,15 +7,16 @@ class ImageList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-        itemCount: images.length,
-        itemBuilder: (context, int index) {
-          return Column(
-            children: [
-              showImage(images[index].image),
-              Text(images[index].url)
-            ],
-          );
-        });
+      itemCount: images.length,
+      itemBuilder: (context, int index) {
+        return Column(
+          children: [
+            showImage(images[index].image),
+            Text(images[index].url)
+          ],
+        );
+      }
+    );
   }
 
   Widget showImage(imageUrl) {

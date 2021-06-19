@@ -22,6 +22,7 @@ class _LoginState extends State<Login> with ValidationMixin{
   @override
 
   Widget build(BuildContext context) {
+    setState(() {});
     return SafeArea(
       child: Scaffold(
         body: Container(
@@ -66,6 +67,8 @@ class _LoginState extends State<Login> with ValidationMixin{
                       iconData: Icons.login, 
                       onPress: () {
                         validateLogin(context);
+                        emailTextController.clear();
+                        passwordTextController.clear();
                       }
                     ),
                   ],

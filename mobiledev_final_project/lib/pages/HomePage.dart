@@ -23,6 +23,13 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Let's See Some Foxes!"),
+        automaticallyImplyLeading: false,
+        leading: IconButton (
+          icon: Icon(Icons.logout), 
+          onPressed: () { 
+            Navigator.pop(context); 
+          },
+        ),
       ),
       body: ImageList(images),
       floatingActionButton: FloatingActionButton(
@@ -31,22 +38,7 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
-/*
-  Widget showImage() {
-    print("from ImageList.dart");
-    print(tempURL);
-    if(tempURL != null){
-      return Container(
-        decoration: BoxDecoration(border: Border.all(color: Colors.red[600])),
-        padding: EdgeInsets.all(10.0),
-        margin: EdgeInsets.all(10.0),
-      );
-    } else {
-      return Text("No images yet, please click the button!");
-    }
-    
-  }
-*/
+
   void fetchImage() async {
     var response = await http.get(Uri.https(url,'/floof/'));
     dynamic parsedJSON = json.decode(response.body);
@@ -54,4 +46,6 @@ class _HomePageState extends State<HomePage> {
     images.add(imageModel);
     setState(() {});
   }
+
+   
 }
