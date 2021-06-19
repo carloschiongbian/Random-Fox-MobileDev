@@ -48,22 +48,13 @@ class _HomePageState extends State<HomePage> {
     }
     
   }
-//try making page reload
-  fetchImage() async {
-      
-      print("fetchImage function");
-      var response = await http.get(Uri.https(url,'/floof/'));
-      var parsedJSON = jsonDecode(response.body);
-      
-      ImageModel imageModel = parsedJSON['image'];
-      // print(imageModel);
-      images.add(imageModel);
-      print("from parsedJSON");
-      print(parsedJSON['image']);
-      tempURL = parsedJSON['image'];
-      print("from tempURL");
-      print(tempURL);
-      setState(() {});
-      
+
+  fetchImage() async {  
+    var response = await http.get(Uri.https(url,'/floof/'));
+    var parsedJSON = jsonDecode(response.body);
+    ImageModel imageModel = parsedJSON['image'];
+    images.add(imageModel);
+    tempURL = parsedJSON['image'];
+    setState(() {})
   }
 }
