@@ -55,6 +55,6 @@ class _HomePageState extends State<HomePage> {
     ImageModel imageModel = parsedJSON['image'];
     images.add(imageModel);
     tempURL = parsedJSON['image'];
-    setState(() {})
+    setState(() {});
   }
 }
