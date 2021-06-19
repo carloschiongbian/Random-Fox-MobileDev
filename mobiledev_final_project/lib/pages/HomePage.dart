@@ -16,7 +16,6 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int count = 0;
   List<ImageModel> images = [];
-  String tempURL;
   
   static const String url = "randomfox.ca";
   @override
@@ -25,14 +24,14 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: Text("Let's See Some Foxes!"),
       ),
-      body: showImage(),
+      body: ImageList(images),
       floatingActionButton: FloatingActionButton(
         onPressed: () { fetchImage(); },
         child: Icon(Icons.add),
       ),
     );
   }
-
+/*
   Widget showImage() {
     print("from ImageList.dart");
     print(tempURL);
@@ -41,20 +40,18 @@ class _HomePageState extends State<HomePage> {
         decoration: BoxDecoration(border: Border.all(color: Colors.red[600])),
         padding: EdgeInsets.all(10.0),
         margin: EdgeInsets.all(10.0),
-        child: Image.network(tempURL),
       );
     } else {
       return Text("No images yet, please click the button!");
     }
     
   }
-
-  fetchImage() async {  
+*/
+  void fetchImage() async {
     var response = await http.get(Uri.https(url,'/floof/'));
-    var parsedJSON = jsonDecode(response.body);
-    ImageModel imageModel = parsedJSON['image'];
+    dynamic parsedJSON = json.decode(response.body);
+    ImageModel imageModel = ImageModel.fromJSON(parsedJSON);
     images.add(imageModel);
-    tempURL = parsedJSON['image'];
     setState(() {});
   }
 }

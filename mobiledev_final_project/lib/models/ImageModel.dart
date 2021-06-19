@@ -1,12 +1,15 @@
 class ImageModel {
   String image;
+  String url;
   
 
-  ImageModel({this.image});
+  ImageModel(this.image, this.url);
 
-  factory ImageModel.fromJSON(Map<String, dynamic> parsedJSON) {
-    return ImageModel(
+  ImageModel.fromJSON(Map<String, dynamic> parsedJSON) {
+    /*return ImageModel(
       image: parsedJSON['image']
-    );
+    ); */
+    url = image = parsedJSON['image'];
+
   }
 }
