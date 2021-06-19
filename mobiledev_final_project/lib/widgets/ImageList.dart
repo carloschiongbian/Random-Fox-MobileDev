@@ -1,27 +1,29 @@
 import 'package:mobiledev_final_project/models/ImageModel.dart';
 import 'package:flutter/material.dart';
-class ImageList extends StatelessWidget {
-  final ImageModel images;
-  final int count;
-  
-  ImageList({
-              this.images,
-              this.count
-            });
 
+class ImageList extends StatelessWidget {
+  final List<ImageModel> images;
+  ImageList(this.images);
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(  
-      itemCount: count,
-      itemBuilder: (context, int index) {
-        return Column(
-          children: [
-            // showImage(this.images),
-          ],
-        );
-      }
-    );
+    return ListView.builder(
+        itemCount: images.length,
+        itemBuilder: (context, int index) {
+          return Column(
+            children: [
+              showImage(images[index].image),
+              Text(images[index].url)
+            ],
+          );
+        });
   }
 
-  
+  Widget showImage(imageUrl) {
+    return Container(
+      decoration: BoxDecoration(border: Border.all(color: Colors.purple)),
+      padding: EdgeInsets.all(20.0),
+      margin: EdgeInsets.all(20.0),
+      child: Image.network(imageUrl),
+    );
+  }
 }
