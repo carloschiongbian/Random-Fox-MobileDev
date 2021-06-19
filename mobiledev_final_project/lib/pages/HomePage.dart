@@ -51,10 +51,10 @@ class _HomePageState extends State<HomePage> {
 
   fetchImage() async {  
     var response = await http.get(Uri.https(url,'/floof/'));
-    var parsedJSON = jsonDecode(response.body);
-    ImageModel imageModel = parsedJSON['image'];
+    dynamic parsedJSON = json.decode(response.body);
+    ImageModel imageModel = ImageModel.fromJSON(parsedJSON);
     images.add(imageModel);
     tempURL = parsedJSON['image'];
-    setState(() {})
+    setState(() {});
   }
 }
