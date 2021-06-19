@@ -91,7 +91,6 @@ class _LoginState extends State<Login> with ValidationMixin{
 
   void validateLogin(context){
     if(formKey.currentState.validate()){
-      print("Valid");
       navigateToHomePage(context);
     } else {
       print("Invalid");
